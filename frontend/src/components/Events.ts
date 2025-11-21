@@ -79,6 +79,7 @@ export const EventModal = (event: Event) => {
 export const EventCard = (e: Event) => {
   const eventDate = new Date(e.date);
   const isPast = eventDate < new Date();
+  const descriptionString = e.description || '';
   return `
 <article class="event" >
 <header>
@@ -88,8 +89,7 @@ export const EventCard = (e: Event) => {
         <h4>${e.title}</h4>
         <p>${Calendar} ${eventDate.toLocaleDateString()}</p>
         <p>Host: ${e.host?.name || `User ${e.host_id}`}</p>
-
-        ${e.description && `<p>${e.description}</p>`}
+        ${descriptionString}
     </main>
     <footer>
         <span>
